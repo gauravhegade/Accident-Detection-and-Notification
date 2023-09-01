@@ -1,6 +1,0 @@
-train: datasets/train/images
-val: datasets/valid/images
-test: datasets/test/images
-
-nc: 2
-names: ["moderate", "severe"]

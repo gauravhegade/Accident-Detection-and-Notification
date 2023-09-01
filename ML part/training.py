@@ -1,7 +1,4 @@
 from ultralytics import YOLO
-import torch
-
-# torch.backends.cudnn.enabled = False
 
 data_path = "./data.yaml"
 
