@@ -7,7 +7,7 @@ Accidents on the road can have serious consequences, and quick response times ar
 - Create a virtual environment and activate it: `python -m venv venv && source venv/bin/activate`
 - Install Ultralytics: `pip install ultralytics`
 - Clone this repository: `git clone https://github.com/gauravhegade/MCES-Accident-Detection.git Accident-Detection`
-- `cd` into the directory: `cd Accident-Detection`
+- `cd` into the directory: `cd Accident-Detection`, then proceed to Step 2
 
 ### Step 2: Static Image/Video Detection
 
