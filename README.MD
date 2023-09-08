@@ -6,16 +6,17 @@ Accidents on the road can have serious consequences, and quick response times ar
 
 - Create a virtual environment and activate it: `python -m venv venv && source venv/bin/activate`
 - Install Ultralytics: `pip install ultralytics`
-- Clone this repository: `git clone https://github.com/gauravhegade/`
+- Clone this repository: `git clone https://github.com/gauravhegade/MCES-Accident-Detection.git Accident-Detection`
+- `cd` into the directory: `cd Accident-Detection`
 
 ### Step 2: Static Image/Video Detection
 
-- To perform static image/video detection, use the file named `detecting_static.py`
+- To perform static image/video detection, use the file named `detecting_static.py` available in `ML Part` folder
 - Run the script: `python detecting_static.py`
 - The script will load the model, perform object detection on the specified image (sample input images available in sample input folder), and save the results in the `results` directory.
 
 ### Step 3: Videostream Detection
 
-- To perform videostream detection, use the file named `detecting_videostream.py`
+- To perform videostream detection, use the file named `detecting_videostream.py` available in `ML Part` folder
 - Run the script: `python detecting_videostream.py`
 - The script will load the model, perform object detection on the input videostream (specified by the `stream_url`) by converting it to individual frames.
