@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
 # Load a model
-model = YOLO("ML part/best.pt")
+model = YOLO("ML part/shub.pt")
 
 # path variables
 save_path = "ML part/results/"

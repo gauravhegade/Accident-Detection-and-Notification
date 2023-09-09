@@ -1,0 +1,3 @@
+ultralytics
+twilio
+opencv-python
