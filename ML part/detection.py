@@ -64,9 +64,7 @@ def send_email_with_frame(frame_path):
 
 # detection
 class Detection:
-    # # constructor
-    # def _init_(self):
-    #     pass
+    detection_result = []
 
     def prediction(path):
         # detection
@@ -91,17 +89,19 @@ class Detection:
                     message = f"Accident detected. Severity level: {conf*100}%. Check email for Image."
                     send_whatsapp_message("+918431342228", message)
 
-                    return class_id
+                    Detection.detection_result.append(class_id)
+                    Detection.detection_result.append(conf)
+                    return Detection.detection_result
 
-        return -1
+        return [0, 0]
 
     def staticDetection():
         # path variables
         image_path = "ML part/sample_input/images/image9.jpg"
         # video_path = "ML part/sample_input/videos/video3.mp4"
 
-        class_id = Detection.prediction(image_path)
-        return class_id
+        Detection.detection_result = Detection.prediction(image_path)
+        return Detection.detection_result
 
     def videoStreamDetection():
         # Set the dimensions for captured frames
@@ -130,14 +130,14 @@ class Detection:
             cv2.imwrite(temp_image_path, resized_frame)
 
             # Perform object detection on the image and show the results
-            class_id = Detection.prediction(temp_image_path)
+            Detection.detection_result = Detection.prediction(temp_image_path)
 
             # Check for the 'q' key press to quit
             key = cv2.waitKey(1)
             if key & 0xFF == ord("q") or key == 27:
                 break
 
-            return class_id
+            return Detection.detection_result
 
         # Release the video capture and close any OpenCV windows
         cap.release()

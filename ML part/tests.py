@@ -1,12 +1,15 @@
 from integrated import Detection as d
 
-# Static detection
-expected_class_id = d.staticDetection()
-print(expected_class_id)
-print(expected_class_id == 1)
+result_list = []
 
-# # Video stream detection
-# while True:
-#     expected_class_id = d.videoStreamDetection()
-#     print(expected_class_id)
-#     print(expected_class_id == 1)
+# Static detection
+# result_list = d.staticDetection()
+# print(class_id)
+# print(confidence_score)
+
+# Video stream detection
+while True:
+    result_list = d.videoStreamDetection()
+    print(result_list)
+    # print(class_id)
+    # print(confidence_score)

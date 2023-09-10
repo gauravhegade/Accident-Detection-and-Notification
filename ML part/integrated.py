@@ -4,6 +4,8 @@ import cv2
 # Load a model
 model = YOLO("ML part/best.pt")
 
+detection_result = []
+
 
 # detection
 class Detection:
@@ -11,7 +13,7 @@ class Detection:
         save_path = "ML part/results/"
 
         # detection
-        results = model.predict(source=path, show=True, save=True, project=save_path)
+        results = model.predict(source=path, show=True)
 
         if len(results):
             result = results[0]
@@ -31,17 +33,23 @@ class Detection:
                     print("Probability:", conf)
                     print("---")
 
-                return class_id
+                if conf:
+                    print(f"If conf: {conf}")
+                    detection_result.append(class_id)
+                    detection_result.append(conf)
+                    return detection_result
 
-        return -1
+        # detection_result.append(0)
+        # detection_result.append(0)
+        return [0, 0]
 
     def staticDetection():
         # path variables
         image_path = "ML part/sample_input/images/image5.jpg"
         video_path = "ML part/sample_input/videos/video3.mp4"
 
-        class_id = Detection.prediction(image_path)
-        return class_id
+        detection_result = Detection.prediction(image_path)
+        return detection_result
 
     def videoStreamDetection():
         # Set the dimensions for captured frames
@@ -70,14 +78,14 @@ class Detection:
             cv2.imwrite(temp_image_path, resized_frame)
 
             # Perform object detection on the image and show the results
-            class_id = Detection.prediction(temp_image_path)
+            detection_result = Detection.prediction(temp_image_path)
 
             # Check for the 'q' key press to quit
             key = cv2.waitKey(1)
             if key & 0xFF == ord("q") or key == 27:
-                break
+                exit
 
-            return class_id
+            return detection_result
 
         # Release the video capture and close any OpenCV windows
         cap.release()
