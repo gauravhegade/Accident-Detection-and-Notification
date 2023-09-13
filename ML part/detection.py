@@ -11,8 +11,8 @@ model = YOLO("ML part/best.pt")
 
 def send_whatsapp_message(to_whatsapp_number, message):
     # Your Twilio Account SID and Auth Token
-    account_sid = "AC4cfaf3413b20da4d1d1c99a04b03910b"
-    auth_token = "cd67ab2a290e2c3d43bb70e0a3a15031"
+    account_sid = ""
+    auth_token = ""
 
     # Create a Twilio client
     client = Client(account_sid, auth_token)
@@ -86,7 +86,9 @@ class Detection:
                     # Send email notification
                     if send_email_with_frame(path):
                         print("Email sent!")
-                    message = f"Accident detected. Severity level: {conf*100}%. Check email for Image."
+
+                    location = "location"
+                    message = f"Accident detected at location {location}. Severity level: {conf*100}%. Check email for image."
                     send_whatsapp_message("+918431342228", message)
 
                     Detection.detection_result.append(class_id)
