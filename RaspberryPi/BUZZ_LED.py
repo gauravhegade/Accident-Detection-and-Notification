@@ -14,11 +14,12 @@ GPIO.setwarnings(False)
 # Select GPIO mode
 GPIO.setmode(GPIO.BCM)
 
-# Set buzzer - pin 23 as output
+# # These are GPIO pin numbers, not the hardware pin numbers
+# Set buzzer - GPIO.23 as output
 buzzer = 23
 GPIO.setup(buzzer, GPIO.OUT)
 
-# set red,green and blue pins
+# set red,green and blue pins.
 redPin = 12
 greenPin = 19
 bluePin = 13
@@ -29,9 +30,10 @@ GPIO.setup(greenPin, GPIO.OUT)
 GPIO.setup(bluePin, GPIO.OUT)
 
 
-# Define LED functions
+# Define LED functions, LED is common anode (assuming)
 def turnOff():
-    print("Turned off!")
+    print("Turned off all LED pins!")
+    # GPIO.output(buzzer, GPIO.HIGH)
     GPIO.output(redPin, GPIO.HIGH)
     GPIO.output(greenPin, GPIO.HIGH)
     GPIO.output(bluePin, GPIO.HIGH)
