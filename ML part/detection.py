@@ -28,10 +28,12 @@ def send_whatsapp_message(to_whatsapp_number, message):
             to="whatsapp:" + to_whatsapp_number,
         )
         print("WhatsApp message sent successfully:", message.sid)
+        # true if whatsapp message sent
         return True
 
     except Exception as e:
         print("Error sending WhatsApp message:", str(e))
+        # false if any error
         return False
 
 
@@ -91,10 +93,13 @@ class Detection:
                     message = f"Accident detected at location {location}. Severity level: {conf*100}%. Check email for image."
                     send_whatsapp_message("+918431342228", message)
 
+                    # reinitialize the result list to empty to get the updated values for the next detection
+                    Detection.detection_result = []
                     Detection.detection_result.append(class_id)
                     Detection.detection_result.append(conf)
                     return Detection.detection_result
 
+        # return dummy list if nothing detected
         return [0, 0]
 
     def staticDetection():
@@ -135,8 +140,7 @@ class Detection:
             Detection.detection_result = Detection.prediction(temp_image_path)
 
             # Check for the 'q' key press to quit
-            key = cv2.waitKey(1)
-            if key & 0xFF == ord("q") or key == 27:
+            if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
 
             return Detection.detection_result
