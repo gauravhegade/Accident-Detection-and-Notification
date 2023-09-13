@@ -74,6 +74,7 @@ class Detection:
 
         for result in results:
             for box in result.boxes:
+                # extracting data to appropriate variables if an accident is detected means a box is created around that accident area coords
                 class_id = box.cls[0].item()
                 cords = box.xyxy[0].tolist()
                 cords = [round(x) for x in cords]
@@ -82,7 +83,7 @@ class Detection:
                 if conf >= 0.5:  # Adjust the confidence threshold as needed
                     print("Object type:", class_id)
                     print("Coordinates:", cords)
-                    print("Probability:", conf)
+                    print("Confidence Score:", conf)
                     print("---")
 
                     # Send email notification
@@ -93,7 +94,7 @@ class Detection:
                     message = f"Accident detected at location {location}. Severity level: {conf*100}%. Check email for image."
                     send_whatsapp_message("+918431342228", message)
 
-                    # reinitialize the result list to empty to get the updated values for the next detection
+                    # reinitialize the result list to empty to get updated values for the next detection
                     Detection.detection_result = []
                     Detection.detection_result.append(class_id)
                     Detection.detection_result.append(conf)
