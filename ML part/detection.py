@@ -40,7 +40,7 @@ def send_whatsapp_message(to_whatsapp_number, message):
 def send_email_with_frame(frame_path):
     msg = MIMEMultipart()
     msg["From"] = "accidentdetectionmces@gmail.com"
-    msg["To"] = "kir4nchavan@gmail.com"
+    msg["To"] = "<your email here>"
     msg["Subject"] = "Suspicious Activity Detected"
 
     # Attach the image
@@ -92,7 +92,7 @@ class Detection:
 
                     location = "location"
                     message = f"Accident detected at location {location}. Severity level: {conf*100}%. Check email for image."
-                    send_whatsapp_message("+918431342228", message)
+                    send_whatsapp_message("<your number here>", message)
 
                     # reinitialize the result list to empty to get updated values for the next detection
                     Detection.detection_result = []
