@@ -18,7 +18,7 @@ def send_whatsapp_message(to_whatsapp_number, message):
     client = Client(account_sid, auth_token)
 
     # The number you purchased from Twilio or verified on Twilio
-    from_whatsapp_number = "+14155238886"
+    from_whatsapp_number = ""
 
     try:
         # Send the WhatsApp message
@@ -39,8 +39,8 @@ def send_whatsapp_message(to_whatsapp_number, message):
 
 def send_email_with_frame(frame_path):
     msg = MIMEMultipart()
-    msg["From"] = "accidentdetectionmces@gmail.com"
-    msg["To"] = "<your email here>"
+    msg["From"] = "<from email here>"
+    msg["To"] = "<to email here>"
     msg["Subject"] = "Suspicious Activity Detected"
 
     # Attach the image
@@ -51,13 +51,13 @@ def send_email_with_frame(frame_path):
     # Send email using SMTP
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
-    smtp_username = "accidentdetectionmces@gmail.com"
-    smtp_password = "cwouqflkjtrvqynu"
+    smtp_username = ""
+    smtp_password = ""
     server = smtplib.SMTP(smtp_server, smtp_port)
     server.starttls()
     server.login(smtp_username, smtp_password)
     server.sendmail(
-        "accidentdetectionmces@gmail.com", "kir4nchavan@gmail.com", msg.as_string()
+        "<email here>", "<email here>", msg.as_string()
     )
     server.quit()
 
