@@ -5,8 +5,8 @@ model = YOLO("ML part/shub.pt")
 
 # path variables
 save_path = "ML part/results/"
-image_path = "ML part/sample_input/images/image3.jpg"
-video_path = "ML part/sample_input/videos/video3.mp4"
+image_path = "ML part/inputs/images/image3.jpg"
+video_path = "ML part/inputs/videos/video3.mp4"
 
 # detection
 results = model.predict(source=image_path, project=save_path, save=True, show=True)
