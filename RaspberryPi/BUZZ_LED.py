@@ -19,7 +19,7 @@ GPIO.setmode(GPIO.BCM)
 buzzer = 23
 GPIO.setup(buzzer, GPIO.OUT)
 
-# set red,green and blue pins.
+# set red, green and blue pins.
 redPin = 12
 greenPin = 19
 bluePin = 13
@@ -61,7 +61,7 @@ def yellow():
 
 
 def accident_detected():
-    # if accident is severe, fast buzzing and red flashing lights
+    # If accident is severe, fast buzzing and red flashing lights
     if class_id == 1:
         while True:
             GPIO.output(buzzer, GPIO.HIGH)
@@ -94,20 +94,18 @@ def accident_detected():
             sleep(2)
 
 
-result_list = []
-
 while True:
-    # Run forever loop with blinking green LED to indicate the system is running
+    # Run forever loop with a blinking green LED to indicate the system is running
     turnOff()
     sleep(1)  # 1second
     green()
     sleep(1)
 
-    # mapping class id and confidence score to returned list of values
+    # mapping class ID and confidence score to returned list of values
     [class_id, confidence_score] = d.staticDetection()
 
     print(f"Class ID: {class_id}")
     print(f"Confidence Score: {confidence_score}")
 
-    if confidence_score >= 0.5:
+    if confidence_score >= 0.7:
         accident_detected()
