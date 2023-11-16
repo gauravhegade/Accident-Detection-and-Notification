@@ -1,4 +1,4 @@
-from integrated import Detection as d
+from detection_test import Detection as d
 
 # uncomment whichever one you want to test, results will be displayed on the terminal
 
