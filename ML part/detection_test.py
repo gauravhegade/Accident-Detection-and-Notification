@@ -30,7 +30,7 @@ class Detection:
 
                     print("Object type:", class_id)
                     print("Coordinates:", cords)
-                    print("Probability:", conf)
+                    print("Confidence Score:", conf)
                     print("---")
 
                 if conf:
@@ -39,29 +39,28 @@ class Detection:
                     detection_result.append(conf)
                     return detection_result
 
-        # detection_result.append(0)
-        # detection_result.append(0)
+        # if no accident is detected, return a zero list
         return [0, 0]
 
     def staticDetection():
         # path variables
-        image_path = "ML part/sample_input/images/image5.jpg"
-        video_path = "ML part/sample_input/videos/video3.mp4"
+        image_path = "ML part/inputs/images/image5.jpg"
+        video_path = "ML part/inputs/videos/video3.mp4"
 
         detection_result = Detection.prediction(image_path)
         return detection_result
 
     def videoStreamDetection():
         # Set the dimensions for captured frames
-        frame_width = 640
-        frame_height = 480
+        frame_width = 1280
+        frame_height = 720
 
         # known freely available urls with traffic stream:
         # http://204.106.237.68:88/mjpg/1/video.mjpg
         # URL of the video stream
         stream_url = "http://195.196.36.242/mjpg/video.mjpg"
 
-        # start capturing
+        # start capturing 
         cap = cv2.VideoCapture(stream_url)
 
         while cap.isOpened():
@@ -73,7 +72,7 @@ class Detection:
 
             resized_frame = cv2.resize(frame, (frame_width, frame_height))
 
-            # Save the resized frame as an image in temporary directory
+            # Save the resized frame as an image in a temporary directory
             temp_image_path = "ML part/temp/temp.jpg"
             cv2.imwrite(temp_image_path, resized_frame)
 
@@ -81,8 +80,7 @@ class Detection:
             detection_result = Detection.prediction(temp_image_path)
 
             # Check for the 'q' key press to quit
-            key = cv2.waitKey(1)
-            if key & 0xFF == ord("q") or key == 27:
+            if cv2.waitKey(1) == 0xff & ord('q'):
                 exit
 
             return detection_result
