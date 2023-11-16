@@ -1,3 +1,4 @@
 ultralytics==8.0.210
 twilio==8.10.1
-opencv-python==4.8.0.74
+opencv-python==4.8.1.78
+python-dotenv==1.0.0
