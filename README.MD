@@ -15,7 +15,7 @@ Accidents on the road can have serious consequences, and quick response times ar
 
 - To perform static image/video detection, use the file named `detecting_static.py` available in `ML Part` folder
 - Run the script: `python detecting_static.py`
-- The script will load the model, perform object detection on the specified image (sample input images available in sample input folder), and save the results in the `results` directory.
+- The script will load the model, perform object detection on the specified image (sample input images available in `inputs` folder), and save the results in the `results` directory.
 
 #### Step 2.2: Videostream Detection
 
